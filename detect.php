@@ -32,6 +32,20 @@ function supportsImageFormat($format)
     <title>Device Capability Detection</title>
     <script async defer>/* use inline head script to prevent cors blocking and enhance compatibilty */
         document.addEventListener("DOMContentLoaded", function () {
+
+            var viewportWidth = window.innerWidth;
+            var viewportHeight = window.innerHeight;
+            var viewportRatio = viewportWidth / viewportHeight;
+            var viewportOrientation = (viewportWidth > viewportHeight) ? 'landscape' : 'portrait';
+
+            document.getElementById('viewport-width').textContent = viewportWidth;
+            document.getElementById('viewport-height').textContent = viewportHeight;
+            document.getElementById('viewport-orientation').textContent = viewportOrientation;
+            document.getElementById('viewport-ratio').textContent = viewportRatio;
+            document.getElementById('viewport-dpr').textContent = window.devicePixelRatio;
+
+            // ^ simple detections first, to increase backward compatibility
+
             function addListItem(/* @@type {HTMLElement} */ aListElement, aText) {
                 var newListItem = document.createElement('li');
                 newListItem.textContent = aText;
@@ -121,7 +135,8 @@ function supportsImageFormat($format)
                     if (majorVersion) {
                         document.getElementById('ua-version').textContent = majorVersion;
                     }
-                };
+                }
+                ;
             } else {
                 document.getElementById('ua-name').textContent = navigator.appName;
                 document.getElementById('ua-version').textContent = navigator.appVersion;
@@ -141,18 +156,6 @@ function supportsImageFormat($format)
             } else {
                 document.getElementById('device-input-type').textContent = 'no-touch';
             }
-
-
-            var viewportWidth = window.innerWidth;
-            var viewportHeight = window.innerHeight;
-            var viewportRatio = viewportWidth / viewportHeight;
-            var viewportOrientation = (viewportWidth > viewportHeight) ? 'landscape' : 'portrait';
-
-            document.getElementById('viewport-width').textContent = viewportWidth;
-            document.getElementById('viewport-height').textContent = viewportHeight;
-            document.getElementById('viewport-orientation').textContent = viewportOrientation;
-            document.getElementById('viewport-ratio').textContent = viewportRatio;
-            document.getElementById('viewport-dpr').textContent = window.devicePixelRatio;
         });
     </script>
     <style>
