@@ -1,8 +1,7 @@
 # device-detection-page (WIP)
 
-analyze and forward detailed diagnostics about client browser and device capabilities for web page test, refinements, and customer support
+This free service is provided "as-is" without warranty of any kind. Please note that the information provided is not guaranteed to be accurate or complete. Purpose: analyze and forward detailed diagnostics about client browser and device capabilities for web page test, refinements, and customer support.
 
-TODO
+The detection page `detect.php`, when hosted on a web server, probes and lists some device and browser capabilities and properties. Detection is done using JavaScript and CSS media queries, and PHP to analyze HTTP headers. Please reload this page to re-run the detection.
 
-Diagnostic page Devicetester in JS + PHP to dump, collect and forward info about Navigator object, viewport dimensions, pixel density, and some more capabilities, and accessibility preferences in a text filed ready to copy.
-Add Windows 7 Chrome, and Mac Sierra Chrome to local device settings, user agent switcher, and BrowserStack favorites. and Tolino etc
+As most of the detection is done using client-side JavaScript, we could create a serverless `detect.html` and use JavaScript to parse the `accept` HTTP headers. 
