@@ -203,7 +203,7 @@ function supportsImageFormat($format)
         <li>supports webp (image/webp)</li>
     <?php endif; ?>
     <?php if (supportsImageFormat('image/avif')) : ?>
-        <li>supports webp (image/avif)</li>
+        <li>supports AVIF (image/avif)</li>
     <?php endif; ?>
 </ul>
 
@@ -212,6 +212,29 @@ function supportsImageFormat($format)
 <ul id="ul-css">
     <li class="feature feature--forced-colors">forced colors mode is active</li>
 </ul>
-<p>End of the list.</p>
+
+<h2>System Fonts</h2>
+<ul id="fonts">
+    <li style="font-family:'Helvetica Neue',monospace">Helvetica Neue</li>
+    <li style="font-family:'Helvetica',monospace">Helvetica</li>
+    <li style="font-family:'Futura',monospace">Futura</li>
+    <li style="font-family:'Verdana',monospace">Verdana</li>
+    <li style="font-family:'Noto Sans',monospace">Noto Sans</li>
+    <li style="font-family:'Dairantou',monospace">Dairantou</li>
+    <li style="font-family:'Arial',monospace">Arial</li>
+    <li style="font-family:'Segoe UI',monospace">Segoe UI</li>
+    <li style="font-family:'Roboto',monospace">Roboto</li>
+    <li style="font-family:'Inter',monospace">Inter</li>
+    <li style="font-family:'sans-serif',monospace">sans-serif</li>
+
+    <li style="font-family:'Georgia',monospace">Georgia</li>
+    <li style="font-family:'Garamond',monospace">Garamond</li>
+    <li style="font-family:'Times New Roman',monospace">Times New Roman</li>
+    <li style="font-family:'Times',monospace">Times</li>
+    <li style="font-family:'Georgia',monospace">Georgia</li>
+    <li style="font-family:'serif',monospace">serif</li>
+
+    <li style="font-family:'nonExistANto!!la34redsaf',monospace">nonexistant (should always fall back to monospace)</li>
+</ul>
 </body>
 </html>
