@@ -180,6 +180,13 @@ function supportsImageFormat($format)
 <p>This free service is provided "as-is" without warranty of any kind.
     Please note that the information provided is not guaranteed to be accurate or complete.</p>
 
+<h2>Network</h2>
+<ul class="network-info">
+    <li><?php echo (str_contains($_SERVER['REMOTE_ADDR'], ':')) ? 'IPv6' : 'IPv4'; ?></li>
+    <li><?php echo $_SERVER['REMOTE_ADDR']; ?></li>
+    <li><?php echo gethostbyaddr($_SERVER['REMOTE_ADDR']); ?></li>
+</ul>
+
 <h2>Device, Browser, and Platform</h2>
 <ul class="user-agent">
     <li>User agent string: <span id="ua-string"></span></li>
