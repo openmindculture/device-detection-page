@@ -286,5 +286,9 @@ function supportsImageFormat($format)
 
     <li style="font-family:'nonExistANto!!la34redsaf',monospace">nonexistant (should always fall back to monospace)</li>
 </ul>
+
+<hr>
+
+(end of document)
 </body>
 </html>
