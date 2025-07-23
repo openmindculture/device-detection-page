@@ -124,6 +124,23 @@ function supportsImageFormat($format)
             document.getElementById('ua-string').textContent = navigator.userAgent;
             document.getElementById('ua-os').textContent = navigator.platform;
 
+            // desprecated, unreliable user agent string match by https://stackoverflow.com/a/26358856/5069530
+            var browserMatch = 'unknown';
+            if ((navigator.userAgent.indexOf("Opera") || navigator.userAgent.indexOf('OPR')) != -1) {
+                browserMatch = 'Opera';
+            } else if (navigator.userAgent.indexOf("Edg") != -1) {
+                browserMatch = 'Edge';
+            } else if (navigator.userAgent.indexOf("Chrome") != -1) {
+                browserMatch = 'Chrome';
+            } else if (navigator.userAgent.indexOf("Safari") != -1) {
+                browserMatch = 'Safari';
+            } else if (navigator.userAgent.indexOf("Firefox") != -1) {
+                browserMatch = 'Firefox';
+            } else if ((navigator.userAgent.indexOf("MSIE") != -1) || (!!document.documentMode == true)) //IF IE > 10
+            {
+                browserMatch = 'IE';
+            }
+            document.getElementById('ua-match').textContent = browserMatch;
 
             if (navigator.userAgentData && navigator.userAgentData.brands) {
                 // The API provides a list of brands; the first one is usually the official browser brand.
@@ -156,6 +173,24 @@ function supportsImageFormat($format)
             } else {
                 document.getElementById('device-input-type').textContent = 'no-touch';
             }
+
+            if (navigator && navigator.connection) {
+                var networkDetailsList = document.getElementById('network-details');
+                var connection = navigator.connection;
+                if (connection) {
+                    if (connection.effectiveType) {
+                        addListItem(networkDetailsList, 'effective connection type: ' + connection.effectiveType);
+                    }
+                    if (connection.downlink) {
+                        addListItem(networkDetailsList, 'downlink speed: ' + connection.downlink + ' Mbps');
+                    }
+                    if (connection.saveData) {
+                        addListItem(networkDetailsList, 'saveData: true');
+                    } else {
+                        addListItem(networkDetailsList, 'saveData: false');
+                    }
+                }
+            }
         });
     </script>
     <style>
@@ -175,24 +210,29 @@ function supportsImageFormat($format)
 
 <p>This detection page probes and lists some device and browser capabilities and properties.
     Detection is done using JavaScript and CSS media queries, and PHP to analyze HTTP headers.
-    Please reload this page to re-run the detection.</p>
+    Reload this page to re-run the detection after resizing or changing orientation or configuration.</p>
 
 <p>This free service is provided "as-is" without warranty of any kind.
     Please note that the information provided is not guaranteed to be accurate or complete.</p>
 
 <h2>Network</h2>
-<ul class="network-info">
+<ul id="network-details">
     <li><?php echo (str_contains($_SERVER['REMOTE_ADDR'], ':')) ? 'IPv6' : 'IPv4'; ?></li>
     <li><?php echo $_SERVER['REMOTE_ADDR']; ?></li>
     <li><?php echo gethostbyaddr($_SERVER['REMOTE_ADDR']); ?></li>
 </ul>
 
 <h2>Device, Browser, and Platform</h2>
-<ul class="user-agent">
-    <li>User agent string: <span id="ua-string"></span></li>
-    <li>Platform/operating system (OS): <span id="ua-os"></span></li>
-    <li>Browser name: <span id="ua-name">unknown</span></li>
-    <li>Browser version: <span id="ua-version"></span></li>
+<ul id="user-agent" class="user-agent">
+    <li>
+        <strong>
+            <span id="ua-match" title="Browser type/name (guessed from user agent string match)">unknown</span>
+            <span id="ua-version" title="Browser version"></span>
+            <span id="ua-os" title="Platform/operating system (OS)"></span>
+        </strong>
+    </li>
+    <li><span id="ua-string" title="User agent string"></span></li>
+    <li>Legacy browser name: <span id="ua-name">none</span></li>
     <li>Device class: <span id="device-class">unknown</span></li>
     <li>Touch input type: <span id="device-input-type"></span></li>
     <li>Default language: <?php echo getBrowserLanguage() ?></li>
