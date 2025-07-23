@@ -238,7 +238,7 @@ function supportsImageFormat($format)
     <li>Default language: <?php echo getBrowserLanguage() ?></li>
 </ul>
 
-<h2>Viewport Properties</h2>
+<h2>Viewport Properties (Reload after Resizing)</h2>
 <ul id="viewport">
     <li>Viewport dimensions (geometry): <span id="viewport-width">___</span> x <span id="viewport-height">___</span>
     </li>
@@ -263,7 +263,7 @@ function supportsImageFormat($format)
     <li class="feature feature--forced-colors">forced colors mode is active</li>
 </ul>
 
-<h2>System Fonts</h2>
+<h2>System Fonts (Visual Comparison Table)</h2>
 <ul id="fonts">
     <li style="font-family:'Helvetica Neue',monospace">Helvetica Neue</li>
     <li style="font-family:'Helvetica',monospace">Helvetica</li>
