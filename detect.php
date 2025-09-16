@@ -194,7 +194,7 @@ function supportsImageFormat($format)
         });
     </script>
     <style>
-        .feature {
+        .feature, .hidden {
             display: none;
         }
 
@@ -209,7 +209,7 @@ function supportsImageFormat($format)
 <h1>Device Capability Detection and Diagnosis</h1>
 
 <p>This detection page probes and lists some device and browser capabilities and properties.
-    Detection is done using JavaScript and CSS media queries, and PHP to analyze HTTP headers.
+    <!-- Detection is done using JavaScript and CSS media queries, and PHP to analyze HTTP headers. -->
     Reload this page to re-run the detection after resizing or changing orientation or configuration.</p>
 
 <p>This free service is provided "as-is" without warranty of any kind.
@@ -217,12 +217,12 @@ function supportsImageFormat($format)
 
 <h2>Network</h2>
 <ul id="network-details">
-    <li><?php echo (str_contains($_SERVER['REMOTE_ADDR'], ':')) ? 'IPv6' : 'IPv4'; ?></li>
-    <li><?php echo $_SERVER['REMOTE_ADDR']; ?></li>
-    <li><?php echo gethostbyaddr($_SERVER['REMOTE_ADDR']); ?></li>
+    <li class="hidden"><?php echo (str_contains($_SERVER['REMOTE_ADDR'], ':')) ? 'IPv6' : 'IPv4'; ?></li>
+    <li class="hidden"><?php echo $_SERVER['REMOTE_ADDR']; ?></li>
+    <li class="hidden"><?php echo gethostbyaddr($_SERVER['REMOTE_ADDR']); ?></li>
 </ul>
 
-<h2>Device, Browser, and Platform</h2>
+<h2>Device/Browser/Version</h2>
 <ul id="user-agent" class="user-agent">
     <li>
         <strong>
@@ -263,8 +263,8 @@ function supportsImageFormat($format)
     <li class="feature feature--forced-colors">forced colors mode is active</li>
 </ul>
 
-<h2>System Fonts (Visual Comparison Table)</h2>
-<ul id="fonts">
+<h2 class="hidden">System Fonts (Visual Comparison Table)</h2>
+<ul id="fonts" class="hidden">
     <li style="font-family:'Helvetica Neue',monospace">Helvetica Neue</li>
     <li style="font-family:'Helvetica',monospace">Helvetica</li>
     <li style="font-family:'Futura',monospace">Futura</li>
