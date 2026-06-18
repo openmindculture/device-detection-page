@@ -289,6 +289,6 @@ function supportsImageFormat($format)
 
 <hr>
 
-(end of document)
+<a href="/">Home</a>
 </body>
 </html>
